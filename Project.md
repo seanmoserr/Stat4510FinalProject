@@ -1,13 +1,14 @@
 # Project Source Code
 ## Written in the R language, converted to markdown
-
+```
 ##PROJECT
 library(readr)
 wine.data <- read_csv("~/Documents/Stat 4510/Project/wine.data.csv")
 View(wine.data)
 wine.data$Alcohol <- as.factor(wine.data$Alcohol)
 str(wine.data)
-
+```
+```
 ##Basic knn classification
 set.seed(444)
 library(class)
@@ -35,11 +36,11 @@ table(wine.test$Alcohol == wine.knn4)
 mean(wine.test$Alcohol != wine.knn2)
 mean(wine.test$Alcohol != wine.knn3)
 mean(wine.test$Alcohol != wine.knn4)
+```
 
 
 
-
-
+```
 ##Tree method
 library(tree)
 wine.tree = tree(wine.train$Alcohol ~ wine.train$`Malic acid` + wine.train$Ash + wine.train$`Alcalinity of ash`
@@ -62,18 +63,21 @@ table(svm.pred, wine.test$Alcohol)
 tuned.svm = tune("svm", Alcohol~., data=wine.train,
                  kernel="linear", ranges=list(cost=c(0.01, 0.5, 1, 5, 10)))
 summary(tuned.svm)
-
+```
+```
 ##LDA
 library(MASS)
 lda.fit <- lda(Alcohol ~ ., data = wine.train)
 lda.pred <- predict(lda.fit, wine.test)
 mean(wine.test$Alcohol != lda.pred$class)
-
+```
+```
 ##QDA
 qda.fit <- qda(Alcohol ~ ., data = wine.train)
 qda.pred <- predict(qda.fit, wine.test)
 mean(wine.test$Alcohol != qda.pred$class)
-
+```
+```
 ##RandomForest
 library(randomForest)
 wine.rf3 = randomForest(wine.train$Alcohol ~ wine.train$`Malic acid` + wine.train$Ash + wine.train$`Alcalinity of ash`
@@ -83,6 +87,7 @@ wine.rf3 = randomForest(wine.train$Alcohol ~ wine.train$`Malic acid` + wine.trai
 wine.rf3
 
 importance(wine.rf3)
+```
 
 ### Back to home
 * [Home](/README.md)
