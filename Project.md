@@ -1,4 +1,6 @@
 ##Project
+##Written in the R language, converted to markdown
+
 library(readr)
 wine.data <- read_csv("~/Documents/Stat 4510/Project/wine.data.csv")
 View(wine.data)
